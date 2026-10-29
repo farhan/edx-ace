@@ -48,6 +48,8 @@ upgrade: ## update python dependencies
 	uv run --with edx-lint edx_lint write_uv_constraints pyproject.toml
 	uv lock --upgrade
 
+quality: export DJANGO_SETTINGS_MODULE=test_settings
+quality: export PYTHONPATH=.:src/edx_ace
 quality: ## check coding style with pycodestyle and pylint
 	touch src/edx_ace/tests/__init__.py
 	pylint src/edx_ace
